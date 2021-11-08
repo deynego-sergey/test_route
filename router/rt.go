@@ -3,7 +3,6 @@ package router
 import (
 	"container/list"
 	"errors"
-	"log"
 	"strings"
 	"sync"
 )
@@ -13,6 +12,7 @@ var (
 	errInvalidNodeValue      = errors.New("Invalid node value. ")
 	errInvalidSubscribeTopic = errors.New("Invalid subscribe topic. ")
 	errPatternIsPresenr      = errors.New("Pattern already present in list. ")
+	errInvalidRoutePattern   = errors.New("Invalid route pattern. ")
 )
 
 type (
@@ -180,20 +180,21 @@ func (sp *SubscriptionPattern) create(s string) error {
 
 	for _, v := range strings.Split(strings.Trim(s, charDelimiter), charDelimiter) {
 
-		if isTail {
-			return errInvalidSubscribeTopic
-		}
-
-		if nodeValue, e := createNodeValue(v); e != nil {
-			return e
-		} else {
+		if nodeValue, e := createNodeValue(v); e == nil {
 			switch nodeValue.Type() {
 			case nodeTypeSuffix, nodeTypePrefix:
 				return errInvalidSubscribeTopic
+
 			case nodeTypeTail:
+				if isTail {
+					return errInvalidSubscribeTopic
+				}
 				isTail = true
 			}
 			sp.t.PushBack(nodeValue)
+
+		} else {
+			return e
 		}
 	}
 	return nil
@@ -210,12 +211,14 @@ func (sp *SubscriptionPattern) Match(topic string) (result bool) {
 	if len(tn) < 1 {
 		return false
 	}
+
 	ptr := sp.t.Front()
 
 	for _, v := range tn {
 		if ptr == nil {
 			return false
 		}
+
 		switch ptr.Value.(INode).Type() {
 		case nodeTypeString:
 			if !ptr.Value.(INode).Validate(v) {
@@ -294,6 +297,8 @@ func (rp *RoutePattern) Pattern() string {
 
 // Match - проверяет возможность подписки для топика
 func (rp *RoutePattern) Match(topic string) bool {
+
+	//tp, e  := NewSubscribePattern(topic)
 	if len(topic) > 1 {
 		if rp.rt != nil {
 			return rp.find(topic)
@@ -317,10 +322,23 @@ func (rp *RoutePattern) create(route string) error {
 	//ptr := list.New()
 	rp.rt.Init()
 
+	if strings.Count(route, charTail) > 1 {
+		return errInvalidRoutePattern
+	}
+	isTail := false
 	for _, v := range strings.Split(strings.Trim(route, charDelimiter), charDelimiter) {
 		if nodeValue, e := createNodeValue(v); e != nil {
 			return e
 		} else {
+			switch nodeValue.Type() {
+			case nodeTypeTail:
+				if isTail {
+					return errInvalidRoutePattern
+				}
+				isTail = true
+			default:
+
+			}
 			rp.rt.PushBack(nodeValue)
 		}
 	}
@@ -333,40 +351,78 @@ func (rp *RoutePattern) find(topic string) bool {
 	if len(tn) < 1 {
 		return false
 	}
+
 	ptr := rp.rt.Front()
 
 	for _, v := range tn {
+
+		if ptr == nil {
+			return false
+		}
+
+		nv, e := createNodeValue(v)
+
+		if e != nil {
+			return false
+		}
+
 		switch ptr.Value.(INode).Type() {
+
 		case nodeTypeString:
-			//log.Printf("nodeTypeString %v", v )
-			if !ptr.Value.(INode).Validate(v) {
+			switch nv.Type() {
+			case nodeTypeTail:
+				return true
+			case nodeTypePlus:
+				ptr = ptr.Next()
+				continue
+			case nodeTypeString:
+				if !ptr.Value.(INode).Validate(v) {
+					return false
+				}
+			default:
 				return false
 			}
 
 		case nodeTypePlus:
-			//log.Printf("nodeTypePlus %v", v)
-			if !ptr.Value.(INode).Validate(v) {
-				return false
-			}
-		case nodeTypePrefix:
-			//log.Printf("nodeTypePrefix %v", v)
-			if !ptr.Value.(INode).Validate(v) {
-				return false
-			}
-		case nodeTypeSuffix:
-			//log.Printf("nodeTypeSuffix %v", v)
 			if !ptr.Value.(INode).Validate(v) {
 				return false
 			}
 
+		case nodeTypePrefix:
+
+			switch nv.Type() {
+			case nodeTypeTail:
+				return true
+			case nodeTypePlus:
+				ptr = ptr.Next()
+				continue
+			case nodeTypeString:
+				if !ptr.Value.(INode).Validate(v) {
+					return false
+				}
+			default:
+				return false
+			}
+
+		case nodeTypeSuffix:
+			switch nv.Type() {
+			case nodeTypeTail:
+				return true
+			case nodeTypePlus:
+				ptr = ptr.Next()
+				continue
+			case nodeTypeString:
+				if !ptr.Value.(INode).Validate(v) {
+					return false
+				}
+			default:
+				return false
+			}
+
 		case nodeTypeTail:
-			//log.Printf("nodeTypeTail %v", v)
-			//if !ptr.Value.(INode).Validate(v){
-			//	return false
-			//}
 			return ptr.Value.(INode).Validate(v)
+
 		default:
-			log.Printf("Error. Unknown node type %v", v)
 			return false
 		}
 		ptr = ptr.Next()
@@ -398,7 +454,3 @@ func (rp *RoutePattern) subscribe(topic string) bool {
 	}
 	return true
 }
-
-//func NewRouteTree(pattern string) IRouteTree {
-//
-//}

@@ -9,6 +9,8 @@ const (
 	charDelimiter string = `/`
 	charPlus      string = `+`
 	charTail      string = `#`
+	// недопустимые символя для обычного текстового узла
+	invalidChars string = "#"
 	//
 
 	// типы узлов
@@ -17,6 +19,7 @@ const (
 	nodeTypeSuffix          // /+str/
 	nodeTypePlus            // /+/
 	nodeTypeTail            // /#
+
 )
 
 type (
@@ -88,7 +91,9 @@ func (n *nodeTail) Type() NodeType {
 // createNodeValue - создает узел нужного типа
 //
 func createNodeValue(s string) (INode, error) {
+
 	countPlus := strings.Count(s, charPlus)
+
 	if len(s) > 0 && countPlus < 2 {
 
 		if s == charTail {
@@ -98,13 +103,28 @@ func createNodeValue(s string) (INode, error) {
 		if s == charPlus {
 			return &nodePlus{}, nil
 		}
+
 		if countPlus == 0 {
+			if len(s) < 1 || strings.ContainsAny(s, invalidChars) {
+				return nil, errInvalidNodeValue
+			}
 			return &nodeString{v: s}, nil
 		}
 		if strings.HasPrefix(s, charPlus) {
-			return &nodeSuffix{v: strings.TrimPrefix(s, charPlus)}, nil
+			temps := strings.TrimPrefix(s, charPlus)
+			if strings.ContainsAny(temps, charPlus+charTail) {
+				return nil, errInvalidRoutePattern
+			}
+			return &nodeSuffix{v: temps}, nil
 		}
-		return &nodePrefix{v: strings.TrimSuffix(s, charPlus)}, nil
+
+		if strings.HasSuffix(s, charPlus) {
+			temps := strings.TrimSuffix(s, charPlus)
+			if strings.ContainsAny(temps, charPlus+charTail) {
+				return nil, errInvalidRoutePattern
+			}
+			return &nodePrefix{v: temps}, nil
+		}
 	}
 	return nil, errInvalidNodeValue
 }
