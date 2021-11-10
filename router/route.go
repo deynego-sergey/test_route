@@ -68,7 +68,7 @@ func (rt *RouteTable) Match(topic string) (routes []IRoute) {
 	mu.Lock()
 	for _, v := range rt.routes {
 		for _, p := range v {
-			if p.Match(topic) {
+			if p.Match(topic) == nil {
 				routes = append(routes, &Route{
 					broker: p.Agent(),
 					topic:  topic,
@@ -114,7 +114,7 @@ func (rp *RoutePattern) Pattern() string {
 }
 
 // Match - проверяет возможность подписки для топика
-func (rp *RoutePattern) Match(subscribe string) bool {
+func (rp *RoutePattern) Match(subscribe string) error {
 
 	//tp, e  := NewSubscribePattern(topic)
 	if len(subscribe) > 1 {
@@ -122,7 +122,7 @@ func (rp *RoutePattern) Match(subscribe string) bool {
 			return rp.find(subscribe)
 		}
 	}
-	return false
+	return errInvalidSubscribeTopic
 }
 
 // Subscribe -
@@ -143,6 +143,7 @@ func (rp *RoutePattern) create(route string) error {
 	if strings.Count(route, charTail) > 1 {
 		return errInvalidRoutePattern
 	}
+
 	isTail := false
 	for _, v := range strings.Split(strings.Trim(route, charDelimiter), charDelimiter) {
 		if nodeValue, e := createNodeValue(v); e != nil {
@@ -164,89 +165,98 @@ func (rp *RoutePattern) create(route string) error {
 }
 
 // find - найти соответствие
-func (rp *RoutePattern) find(topic string) bool {
+func (rp *RoutePattern) find(topic string) error {
+
 	tn := strings.Split(strings.Trim(topic, charDelimiter), charDelimiter)
-	if len(tn) < 1 {
-		return false
+	subNodeCount := len(tn)
+
+	if subNodeCount < 1 {
+		return errInvalidSubscribeTopic
 	}
 
 	ptr := rp.rt.Front()
 
-	for _, v := range tn {
-
-		if ptr == nil {
-			return false
-		}
-
+	for k, v := range tn {
+		//
 		nv, e := createNodeValue(v)
-
 		if e != nil {
-			return false
+			return errInvalidSubscribeTopic
 		}
-
+		//
+		// если в паттерне роута не осталось элементов, то прорверяем
+		// является ли элемент из подписки последним и `#`
+		if ptr == nil {
+			if ptr == nil && (nv.Type() == nodeTypeTail && k == subNodeCount-1) {
+				return nil
+			}
+			return errNotMatched
+		}
+		//
 		switch ptr.Value.(INode).Type() {
 
 		case nodeTypeString:
 			switch nv.Type() {
 			case nodeTypeTail:
-				return true
+				return nil
 			case nodeTypePlus:
 				ptr = ptr.Next()
 				continue
 			case nodeTypeString:
 				if !ptr.Value.(INode).Validate(v) {
-					return false
+					return errNotMatched
 				}
 			default:
-				return false
+				return errNotMatched
 			}
 
 		case nodeTypePlus:
 			if !ptr.Value.(INode).Validate(v) {
-				return false
+				return errNotMatched
 			}
 
 		case nodeTypePrefix:
 
 			switch nv.Type() {
 			case nodeTypeTail:
-				return true
+				return nil
 			case nodeTypePlus:
 				ptr = ptr.Next()
 				continue
 			case nodeTypeString:
 				if !ptr.Value.(INode).Validate(v) {
-					return false
+					return errNotMatched
 				}
 			default:
-				return false
+				return errNotMatched
 			}
 
 		case nodeTypeSuffix:
 			switch nv.Type() {
 			case nodeTypeTail:
-				return true
+				return nil
 			case nodeTypePlus:
 				ptr = ptr.Next()
 				continue
 			case nodeTypeString:
 				if !ptr.Value.(INode).Validate(v) {
-					return false
+					return errNotMatched
 				}
 			default:
-				return false
+				return errNotMatched
 			}
 
 		case nodeTypeTail:
-			return ptr.Value.(INode).Validate(v)
+			if ptr.Value.(INode).Validate(v) {
+				return nil
+			}
 
 		default:
-			return false
+			return errNotMatched
 		}
 		ptr = ptr.Next()
 	}
 	//return ptr.Value == nil
-	return true
+	return nil
 }
 
 // subscribe - проверить возможность подписки

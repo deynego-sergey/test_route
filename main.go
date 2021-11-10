@@ -28,11 +28,11 @@ func main() {
 		fmt.Println(e.Error())
 		os.Exit(1)
 	} else {
-		if p.Match(*subs) {
+		if e := p.Match(*subs); e == nil {
 			fmt.Println(true)
 			os.Exit(0)
 		}
-		fmt.Println(false)
+		fmt.Println(e)
 
 	}
 	os.Exit(1)

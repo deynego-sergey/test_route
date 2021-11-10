@@ -10,6 +10,7 @@ var (
 	errInvalidSubscribeTopic = errors.New("Invalid subscribe topic. ")
 	errPatternIsPresenr      = errors.New("Pattern already present in list. ")
 	errInvalidRoutePattern   = errors.New("Invalid route pattern. ")
+	errNotMatched            = errors.New("Not matched. ")
 )
 
 type (
@@ -17,7 +18,7 @@ type (
 	IRoutePattern interface {
 		Agent() Agent
 		Pattern() string
-		Match(subscribe string) bool
+		Match(subscribe string) error
 		Subscribe(topic string) bool
 	}
 
