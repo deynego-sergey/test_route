@@ -14,13 +14,8 @@ func Test_NewRouterPattern(t *testing.T) {
 	ptrn := "tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+"
 	topics := []string{
 		"tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/leaf5BB/leaf6/leaf7/CCC/DDD",
-		"/topic1/topic2/sample/samplesuffix1/prefix1sample",
-		"/topic1/topic2/sample/suffix1/prefix1sample/test1/test2",
-		"/topic1/topic2/sample/samplesuffix1/prefix1/test1/test2",
-		"/topic1/topic2/sample/samplesuffix1",
-		"/topic1/topic2/suffix1/prefix1sample/test1/test2",
-		"/topic1/topic2/sample/samplesuffix1/test1/test2",
-		"/topic1/topic2/sample",
+		"tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/leaf5BB/leaf6/leaf7/CCC/",
+		"tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/leaf5BB/leaf6/leaf7",
 	}
 
 	subs := []string{

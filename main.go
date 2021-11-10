@@ -10,16 +10,16 @@ import (
 
 var (
 	route *string
-	topic *string
+	subs  *string
 )
 
 func main() {
 
 	route = flag.String("r", "", "route")
-	topic = flag.String("t", "", "topic")
+	subs = flag.String("t", "", "topic")
 	flag.Parse()
 
-	if *topic == "" || *route == "" {
+	if *subs == "" || *route == "" {
 		fmt.Println(errors.New("Invalid route or topic. "))
 		os.Exit(1)
 	}
@@ -28,7 +28,7 @@ func main() {
 		fmt.Println(e.Error())
 		os.Exit(1)
 	} else {
-		if p.Match(*topic) {
+		if p.Match(*subs) {
 			fmt.Println(true)
 			os.Exit(0)
 		}
