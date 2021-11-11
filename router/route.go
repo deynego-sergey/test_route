@@ -144,29 +144,29 @@ func (rp *RoutePattern) Subscribe(topic string) bool {
 // create -
 func (rp *RoutePattern) create(route string) error {
 	//ptr := list.New()
-	rp.rt.Init()
+	ptr := rp.rt.Init().Front()
 
 	if strings.Count(route, charTail) > 1 {
 		return newRouteError("invalid #")
 	}
-	//ptr := rp.rt.Front()
-	el := &list.Element{}
 	isTail := false
 	for _, v := range strings.Split(strings.Trim(route, charDelimiter), charDelimiter) {
 		if nodeValue, e := createNodeValue(v); isTail || e != nil {
-
-			return newRouteError(el.Value.(INode).String())
+			return newRouteError(func(t bool) string {
+				if t {
+					return ptr.Value.(INode).String()
+				}
+				return v
+			}(isTail))
 		} else {
 			switch nodeValue.Type() {
 			case nodeTypeTail:
 				if isTail {
-					return newRouteError(v)
+					return newRouteError(ptr.Value.(INode).String())
 				}
 				isTail = true
-			default:
-
 			}
-			el = rp.rt.PushBack(nodeValue)
+			ptr = rp.rt.PushBack(nodeValue)
 		}
 	}
 	return nil
