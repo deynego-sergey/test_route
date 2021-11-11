@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"rout/router"
+	"strings"
 )
 
 var (
@@ -31,7 +32,11 @@ func main() {
 		if e = p.Match(*subs); e == nil {
 			fmt.Println(true)
 			os.Exit(0)
+		} else if strings.Contains(e.Error(), "Not matched") {
+			fmt.Println(false)
+			os.Exit(0)
 		}
+
 		fmt.Println(e)
 
 	}

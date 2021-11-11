@@ -1,62 +1,68 @@
-=== RUN   Test_NewRouterPattern
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/# true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/XXX/# false
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/+/+/+/+/+/+/+ true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/# true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/XXX/# false
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/+/+/+/+/+/+/+ true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/# true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/XXX/# false
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa false
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/+/+/+/+/+/+/+ true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3//leaf4/leaf5+/+/leaf7/# Route error : .
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/#/leaf5+/+/leaf7/+ Route error : #.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+leaf5+/+/leaf7/leaf8 Route error : +leaf5+.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/++/leaf7/# Route error : ++.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/#/leaf7/ Route error : #.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/# true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/XXX/# false
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1.
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/+/+/+/+/+/+/+ true
-tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1.
+warning: GOPATH set to GOROOT (/usr/local/go) has no effect
+{"Time":"2021-11-11T17:50:19.103554266+04:00","Action":"run","Test":"Test_NewRouterPattern"}
+{"Time":"2021-11-11T17:50:19.103786331+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"=== RUN   Test_NewRouterPattern\n"}
+{"Time":"2021-11-11T17:50:19.103803033+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/# true\n"}
+{"Time":"2021-11-11T17:50:19.103809245+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/XXX/# false\n"}
+{"Time":"2021-11-11T17:50:19.103814716+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true\n"}
+{"Time":"2021-11-11T17:50:19.103828362+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd. \n"}
+{"Time":"2021-11-11T17:50:19.103839643+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+. \n"}
+{"Time":"2021-11-11T17:50:19.103845414+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103852067+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103863259+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103867787+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.10387419+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2. \n"}
+{"Time":"2021-11-11T17:50:19.103881474+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++. \n"}
+{"Time":"2021-11-11T17:50:19.103893376+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103897915+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/+/+/+/+/+/+/+ true\n"}
+{"Time":"2021-11-11T17:50:19.103904167+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/# tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103911251+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/# true\n"}
+{"Time":"2021-11-11T17:50:19.103915309+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/XXX/# false\n"}
+{"Time":"2021-11-11T17:50:19.10392136+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true\n"}
+{"Time":"2021-11-11T17:50:19.103925859+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd. \n"}
+{"Time":"2021-11-11T17:50:19.103932552+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+. \n"}
+{"Time":"2021-11-11T17:50:19.10393705+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103943332+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103948152+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103955025+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103959483+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2. \n"}
+{"Time":"2021-11-11T17:50:19.103970705+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++. \n"}
+{"Time":"2021-11-11T17:50:19.103977107+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.103980063+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/+/+/+/+/+/+/+ true\n"}
+{"Time":"2021-11-11T17:50:19.103987297+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.1039943+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/# true\n"}
+{"Time":"2021-11-11T17:50:19.104006534+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/XXX/# false\n"}
+{"Time":"2021-11-11T17:50:19.104022184+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa false\n"}
+{"Time":"2021-11-11T17:50:19.104033115+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd. \n"}
+{"Time":"2021-11-11T17:50:19.104036441+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+. \n"}
+{"Time":"2021-11-11T17:50:19.104039246+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104042072+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104044877+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104049757+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104052652+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2. \n"}
+{"Time":"2021-11-11T17:50:19.104057391+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++. \n"}
+{"Time":"2021-11-11T17:50:19.104060287+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104064896+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/+/+/+/+/+/+/+ true\n"}
+{"Time":"2021-11-11T17:50:19.104067571+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8 tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.10407244+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3//leaf4/leaf5+/+/leaf7/# Route error : . \n"}
+{"Time":"2021-11-11T17:50:19.104080576+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/#/leaf5+/+/leaf7/+ Route error : #. \n"}
+{"Time":"2021-11-11T17:50:19.104083351+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+leaf5+/+/leaf7/leaf8 Route error : +leaf5+. \n"}
+{"Time":"2021-11-11T17:50:19.10408808+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/++/leaf7/# Route error : ++. \n"}
+{"Time":"2021-11-11T17:50:19.104090896+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/#/leaf7/ Route error : #. \n"}
+{"Time":"2021-11-11T17:50:19.104095424+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/# true\n"}
+{"Time":"2021-11-11T17:50:19.104099312+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/XXX/# false\n"}
+{"Time":"2021-11-11T17:50:19.104104041+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+/leaf3/leaf4/+/leaf6/leaf7/aaa true\n"}
+{"Time":"2021-11-11T17:50:19.104107057+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/+ddd/leaf6/leaf7/aaa Subscribe error : +ddd. \n"}
+{"Time":"2021-11-11T17:50:19.10411382+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/AAleaf1/leaf3/leaf4/ccc+/leaf6/leaf7/aaa Subscribe error : ccc+. \n"}
+{"Time":"2021-11-11T17:50:19.104116915+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/+/leaf6/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104121735+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/ccc+/+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.10412466+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+aaa/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.1041297+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.104132616+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/#leaf2/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : #leaf2. \n"}
+{"Time":"2021-11-11T17:50:19.104137325+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/++/+leaf1/leaf3/leaf4/leaf5+/bbb+/leaf7/aaa Subscribe error : ++. \n"}
+{"Time":"2021-11-11T17:50:19.104140501+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+ Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.10414521+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/+/+/+/+/+/+/+ true\n"}
+{"Time":"2021-11-11T17:50:19.104148165+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/+/+ tp/binance/trading/leaf2/+leaf1/leaf3/leaf4/leaf5+/+/leaf7/leaf8/aaa Subscribe error : +leaf1. \n"}
+{"Time":"2021-11-11T17:50:19.10415568+04:00","Action":"output","Test":"Test_NewRouterPattern","Output":"--- PASS: Test_NewRouterPattern (0.00s)\n"}
+{"Time":"2021-11-11T17:50:19.104162082+04:00","Action":"pass","Test":"Test_NewRouterPattern","Elapsed":0}
+{"Time":"2021-11-11T17:50:19.104166821+04:00","Action":"output","Output":"PASS\n"}
+{"Time":"2021-11-11T17:50:19.104359634+04:00","Action":"pass","Elapsed":0.003}
