@@ -28,7 +28,7 @@ func main() {
 		fmt.Println(e.Error())
 		os.Exit(1)
 	} else {
-		if e := p.Match(*subs); e == nil {
+		if e = p.Match(*subs); e == nil {
 			fmt.Println(true)
 			os.Exit(0)
 		}
