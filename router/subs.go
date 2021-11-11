@@ -2,6 +2,8 @@ package router
 
 import (
 	"container/list"
+	"errors"
+	"fmt"
 	"strings"
 	"sync"
 )
@@ -17,6 +19,10 @@ type (
 		sub []ISubscriptionPattern
 	}
 )
+
+func newSubsError(detail string) error {
+	return errors.New(fmt.Sprintf("Subscribe error : %s. ", detail))
+}
 
 // NewSubscribePattern -
 func NewSubscribePattern(pattern string) (ISubscriptionPattern, error) {

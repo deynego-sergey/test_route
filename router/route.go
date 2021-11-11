@@ -2,6 +2,8 @@ package router
 
 import (
 	"container/list"
+	"errors"
+	"fmt"
 	"strings"
 	"sync"
 )
@@ -88,6 +90,10 @@ func (r *Route) Route() string {
 	return r.topic
 }
 
+func newRouteError(detail string) error {
+	return errors.New(fmt.Sprintf("Route error : %s. ", detail))
+}
+
 // NewRoutePattern - создает паттерн для подписки
 //
 func NewRoutePattern(broker Agent, pattern string) (IRoutePattern, error) {
@@ -141,24 +147,26 @@ func (rp *RoutePattern) create(route string) error {
 	rp.rt.Init()
 
 	if strings.Count(route, charTail) > 1 {
-		return errInvalidRoutePattern
+		return newRouteError("invalid #")
 	}
-
+	//ptr := rp.rt.Front()
+	el := &list.Element{}
 	isTail := false
 	for _, v := range strings.Split(strings.Trim(route, charDelimiter), charDelimiter) {
-		if nodeValue, e := createNodeValue(v); e != nil {
-			return e
+		if nodeValue, e := createNodeValue(v); isTail || e != nil {
+
+			return newRouteError(el.Value.(INode).String())
 		} else {
 			switch nodeValue.Type() {
 			case nodeTypeTail:
 				if isTail {
-					return errInvalidRoutePattern
+					return newRouteError(v)
 				}
 				isTail = true
 			default:
 
 			}
-			rp.rt.PushBack(nodeValue)
+			el = rp.rt.PushBack(nodeValue)
 		}
 	}
 	return nil
@@ -180,7 +188,7 @@ func (rp *RoutePattern) find(topic string) error {
 		//
 		nv, e := createNodeValue(v)
 		if e != nil {
-			return errInvalidSubscribeTopic
+			return newSubsError(v)
 		}
 		//
 		// если в паттерне роута не осталось элементов, то прорверяем
@@ -190,6 +198,12 @@ func (rp *RoutePattern) find(topic string) error {
 				return nil
 			}
 			return errNotMatched
+		}
+		//
+		switch nv.Type() {
+
+		case nodeTypeSuffix, nodeTypePrefix:
+			return newSubsError(v)
 		}
 		//
 		switch ptr.Value.(INode).Type() {
