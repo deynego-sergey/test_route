@@ -62,6 +62,17 @@ func Test_NewRouterPattern(t *testing.T) {
 					fmt.Println(r.Pattern(), s, e)
 				}
 			}
+
+			for _, s := range topic {
+				if e = r.Match(s); e == nil {
+					fmt.Println(r.Pattern(), s, true)
+				} else if strings.Contains(e.Error(), errNotMatched.Error()) {
+					fmt.Println(r.Pattern(), s, false)
+				} else {
+
+					fmt.Println(r.Pattern(), s, e)
+				}
+			}
 		}
 	}
 }

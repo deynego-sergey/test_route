@@ -270,6 +270,9 @@ func (rp *RoutePattern) find(topic string) error {
 		ptr = ptr.Next()
 	}
 	//return ptr.Value == nil
+	if ptr != nil {
+		return errNotMatched
+	}
 	return nil
 }
 
